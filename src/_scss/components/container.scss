@@ -1,0 +1,375 @@
+.container {
+    background: $pearl;
+    box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.25);
+    height: 100%;
+    width: 48%;
+    position: relative;
+    @include screen-down($tablet) {
+        width: 85%;
+        height: 650px;
+        position: absolute;
+        background: transparent;
+        box-shadow: none;
+        &:first-of-type {
+            top: 0;
+            margin-bottom: 50px;
+        }
+
+        &:last-of-type {
+            top: 700px;
+            margin-bottom: 35px;
+        }
+    }
+    @include screen-down($tablet-mini) {
+        width: 98%;
+        &:last-of-type {
+            top: 675px;
+        }
+        &.selected-recipe-card {
+            display: none;
+        }
+    }
+    @include screen-down($mobile-xl) {
+        height: 550px;
+        &:last-of-type {
+            top: 575px;
+        }
+    }
+
+    @include screen-down($tablet) {
+        &.card-position-adjusted {
+            &.first-card {
+                height: unset;
+                padding-bottom: 10px; 
+                border: solid 2px $smoke;
+                background: $pearl;
+            }
+            &.second-card {
+                top: 60px;
+            }
+        }
+    }
+
+    .chevron-arrow {
+        height: 16px;
+        width: 20px;
+        position: absolute;
+        right: 10px;
+        top: 15px;
+        cursor: pointer;
+        &.inverted {
+            transform: rotate(180deg);
+            top: 8px;
+            right: 11px;
+            animation: rotate 0.25s ease-in-out;
+        }
+        &.right-side-up {
+            transform: rotate(360deg);
+            top: 15px;
+            animation: back 0.25s ease-in-out;
+        }
+        @include screen-up($tablet) {
+            display: none;
+        }
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(180deg);
+            }
+        }
+        @keyframes back {
+            0% {
+                transform: rotate(180deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    }
+
+    .container-heading, .second-container-heading {
+        margin-top: 10px;
+        position: relative;
+        @include screen-down($tablet) {
+            font-size: 24px;
+        }
+        @include screen-down($mobile) {
+            font-size: 18px;
+            letter-spacing: 0.15px;;
+        }
+    }
+
+    .crockpot::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        transform: translateY(-60%);
+        height: 20px;
+        width: 20px;
+        background-image: url('../../assets/slow-cooker.svg');
+        background-size: cover;
+        margin-left: 6px;
+    }
+
+    .filters-container {
+        width: 90%;
+        margin: 10px 0;
+        @include screen-down($tablet) {
+            width: 100%;
+            &.hide-filters {
+                display: none;
+            }
+        }
+        h3 {
+            font-size: 20px;
+            margin-right: 4px;
+            @include screen-down($tablet) {
+                font-size: 14px;
+            }
+        }
+        .filter-label {
+            padding: 2px 8px;
+            border-radius: 16px;
+            border: 2px solid $smoke;
+            margin-bottom: 3px;
+            margin-right: 2px;
+            font-size: 18px;
+            @include screen-down($tablet) {
+                font-size: 12px;
+                background: $pearl;
+            }
+            &.selected {
+                border: 2px solid $grass;
+            }
+        }
+    }
+    .selected-results-outer-container {
+        width: 98%;
+        overflow-y: scroll;
+        margin-bottom: 16px;
+        &::-webkit-scrollbar {
+            width: 8px;
+        }
+        &::-webkit-scrollbar-thumb {
+            background: $slate;
+            border-radius: 10px;
+        }
+        @include screen-down($tablet) {
+            &.hide-results-cards {
+                display: none;
+            }
+        }
+        .results-container {
+            width: 90%;
+            margin-bottom: 12px;
+            position: relative;
+            @include screen-down($tablet) {
+                margin-bottom: 8px;
+                width: 100%;
+            }
+            .recipe-card {
+                margin-bottom: 8px;
+                border: 2px $smoke solid;
+                padding: 4px 10px 4px 4px; 
+                &.selected-recipe {
+                    border: 3px $grass solid;
+                }
+                &:last-of-type {
+                    margin-bottom: 0;
+                }
+                @include screen-down($tablet) {
+                    background: $pearl;
+                }
+                .recipe-info {
+                    img, .result-card-img {
+                        width: 60px;
+                        height: 60px;
+                        margin-right: 6px;
+                        @include screen-down($tablet) {
+                            width: 45px;
+                            height: 45px;
+                        }
+                    }
+                    .recipe-name {
+                        position: relative;
+                        font-size: 16px;
+                        @include screen-down($tablet) {
+                            font-size: 12px;
+                        }
+                        @include screen-down($mobile) {
+                            &.crockpot::after {
+                                height: 14px;
+                                width: 14px;
+                            }
+                        }
+                    }
+                    .recipe-author {
+                        font-size: 14px;
+                        @include screen-down($tablet) {
+                            font-size: 10px;
+                        }
+                    }
+                }
+                .liked-holder {
+                    padding-left: 4px;
+                    svg {
+                        height: 30px;
+                        width: 30px; 
+                        cursor: pointer;
+                        @include screen-down($tablet) {
+                            height: 20px;
+                            width: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .author {
+        margin-bottom: 16px;
+    }
+    .selected-recipe-outer-container {
+        width: 98%;
+        overflow-y: scroll;
+        margin-bottom: 16px;
+        &::-webkit-scrollbar {
+            width: 8px;
+        }
+        &::-webkit-scrollbar-thumb {
+            background: $slate;
+            border-radius: 10px;
+        }
+        .selected-recipe-container {
+            width: 90%;
+            @include screen-down($mobile-xl) {
+                width: 100%;
+            }
+            .recipe-image {
+                width: 100%;
+                height: auto; 
+                max-height: 450px;
+                margin-bottom: 6px;
+                border: solid 2px $smoke;
+            }
+            .section-title {
+                margin-bottom: 6px;
+                font-size: 20px;
+                @include screen-down($tablet-mini) {
+                    font-size: 18px;
+                }
+                @include screen-down($mobile) {
+                    font-size: 14px;
+                }
+            }
+            .subheading-title {
+                margin-bottom: 4px;
+                text-align: left;
+                margin-left: -10px;
+                text-decoration: underline;
+                text-underline-position: under;
+                font-size: 16px;
+                @include screen-down($mobile) {
+                    font-size: 12px;
+                    margin-left: -6px;
+                }
+            }        
+            .times-container {
+                border: 2px solid $smoke;
+                padding: 5px 8px;
+                margin-bottom: 8px;
+                @include screen-down($tablet) {
+                    background: $pearl;
+                }
+                .clock-svg {
+                    margin-bottom: 8px;
+                    height: 12px; 
+                    width: 18px;
+                    @include screen-down($mobile) {
+                        height: 9px; 
+                        width: 15px;
+                    }
+                }
+                .time-label {
+                    font-size: 10px;
+                    @include screen-down($mobile-xl) {
+                        font-size: 8px;
+                    }
+                }
+                .time {
+                    font-size: 24px;
+                    @include screen-up($tablet) {
+                        letter-spacing: 0.1px;
+                    }
+                    @include screen-down($mobile-xl) {
+                        font-size: 20px;
+                    }
+                    @include screen-down($mobile) {
+                        font-size: 14px;
+                        letter-spacing: 0.1px;
+                    }
+                }
+            }
+            .recipe-info-container {
+                border: 2px solid $smoke;
+                padding: 5px;
+                @include screen-down($tablet) {
+                    background: $pearl;
+                }
+                .servings-container {
+                    margin-bottom: 8px;
+                    .chef-svg {
+                        width: 12px;
+                        height: 12px;
+                        margin-bottom: 2px;
+                    }
+                }
+                .partial-line {
+                    width: 65%;
+                    height: 1.5px; 
+                    background: $smoke;
+                    margin-bottom: 10px;
+                }
+                .ingredients-container {
+                    margin-bottom: 16px;
+                    width: 90%;
+                    .mapped-ingredients {
+                        .ingredient-item-line {
+                            margin-bottom: 4px;
+                            .ingredient-checkbox {
+                                border: 1px solid $pearl;
+                                margin-right: 6px;
+                                @include screen-down($mobile) {
+                                    margin-right: 4px;
+                                }
+                            }
+                            label {
+                                @include screen-down($mobile) {
+                                    font-size: 12px;
+                                }
+                            }
+                        }
+                    }
+                }
+                .instructions-container {
+                    margin-bottom: 16px;
+                    width: 90%;
+                    .mapped-prep, .mapped-cook, .mapped-serve {
+                        margin-bottom: 8px;
+                        ol {
+                            margin-left: 10px;
+                        }
+                        .step {
+                            margin-bottom: 4px;
+                            @include screen-down($mobile) {
+                                font-size: 12px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

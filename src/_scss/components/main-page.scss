@@ -1,0 +1,43 @@
+.main-page-content {
+    background-color: $tan;
+    width: calc(100vw - 210px);
+    height: calc(100vh - 10px);
+    border-radius: 0 16px 16px 0;
+    margin-right: 5px;
+    @include screen-down($desktop) {
+        width: calc(100vw - 90px);
+    }
+    @include screen-down($mobile-xl) {
+        width: calc(100vw - 45px);
+        height: 100%;
+        margin-right: 0;
+        border-radius: 0;
+    }
+
+    .page-container {
+        width: calc(100% - 50px);
+        height: calc(100% - 140px);
+        margin-left: auto;
+        margin-right: auto;
+        @include screen-down($desktop) {
+            width: calc(100% - 5px);
+        }
+        @include screen-down($tablet) {
+            height: calc(100% - 100px);
+        }
+        @include screen-down($mobile-xl) {
+            height: calc(100% - 65px);
+        }
+
+        .pantry-page, .grocery-page, .recipes-page, .favorites-page, .login-page {
+            width: 100%;
+            height: 100%;
+            @include screen-down($tablet) {
+                flex-direction: column;
+                align-items: center;
+                position: relative;
+                overflow-y: auto;
+            }
+        }
+    }
+}

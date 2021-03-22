@@ -1,0 +1,134 @@
+.dashboard {
+    width: 200px;
+    height: calc(100vh - 10px);
+    background-color: $charcoal;
+    border-radius: 16px 0 0 16px;
+    margin-left: 5px;
+    @include screen-down($desktop) {
+        width: 80px;
+    }
+    @include screen-down($mobile-xl) {
+        height: 100%;
+        margin-left: 0;
+        width: 45px;
+        border-radius: 0;
+    }
+
+    .logo {
+        margin-top: 25px;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        padding-bottom: 12px;
+        border-bottom: 2.5px solid $pearl;
+        margin-bottom: 15px;
+        color: $pearl;
+        &.desktop {
+            @include screen-down($desktop) {
+                display: none;
+            }
+        }
+        &.mobile {
+            @include screen-up($desktop) {
+                display: none;
+            }
+        }
+    }
+    
+    .dash-routes {
+        height: calc(100% - 100px);
+        .dash-route {
+            padding-top: 15px;
+            padding-bottom: 15px;
+            position: relative;
+            cursor: pointer;
+            @include screen-down($desktop) {
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            svg {
+                margin-right: 10px;
+                margin-left: 20px;
+                @include screen-down($desktop) {
+                    margin-right: 0;
+                    margin-left: 0;
+                    margin-bottom: 4px;
+                }
+                &.pantry-svg {
+                    height: 35px;
+                    width: 30px;
+                    @include screen-down($mobile-xl) {
+                        height: 25px; 
+                        width: 25px;
+                    }
+                }
+                &.grocery-svg {
+                    height: 30px;
+                    width: 30px;
+                    @include screen-down($mobile-xl) {
+                        height: 20px; 
+                        width: 25px;
+                    }
+                }
+                &.recipes-svg {
+                    height: 30px;
+                    width: 30px;
+                    @include screen-down($mobile-xl) {
+                        height: 20px; 
+                        width: 20px;
+                    }
+                }
+                &.favorites-svg {
+                    height: 35px;
+                    width: 28px;
+                    @include screen-down($mobile-xl) {
+                        height: 20px; 
+                        width: 20px;
+                    }
+                }
+                &.login-svg {
+                    width: 30px;
+                    height: 30px;
+                    @include screen-down($mobile-xl) {
+                        height: 22px; 
+                        width: 22px;
+                    } 
+                }
+            }
+            h2 {
+                color: $pearl;
+                @include screen-down($desktop) {
+                    font-size: 8px;
+                }
+                @include screen-down($mobile-xl) {
+                    font-size: 6px;
+                }
+                &.favorite-text {
+                    @include screen-down($mobile-xl) {
+                        display: none;
+                    }
+                }
+                &.fav-text {
+                    @include screen-up($mobile-xl) {
+                        display: none;
+                    }
+                }
+            }
+            &.selected {
+                &::before {
+                    content: '';
+                    background: $grass;
+                    position: absolute;
+                    left: 0;
+                    height: 100%;
+                    width: 12px;
+                    @include screen-down($mobile-xl) {
+                        width: 5px;
+                        height: 80%;
+                    }
+                }
+            }
+        }
+    }
+}
